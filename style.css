@@ -1,0 +1,210 @@
+/* static/css/style.css */
+
+/* 1. Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap');
+
+/* 2. Define CSS Variables (easy to change colors) */
+:root {
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Lato', sans-serif;
+    --color-text: #f0f0f0;
+    --color-text-dark: #333;
+    --color-primary: #007bff;
+    --color-primary-hover: #0056b3;
+    --color-success: #28a745;
+    --color-danger: #dc3545;
+
+    /* Background Gradient Colors */
+    --bg-1: #6a11cb;
+    --bg-2: #2575fc;
+    --bg-3: #ff6a00;
+}
+
+/* 3. Animated Gradient Background */
+@keyframes gradientAnimation {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background: linear-gradient(-45deg, var(--bg-1), var(--bg-2), var(--bg-3));
+    background-size: 400% 400%;
+    animation: gradientAnimation 20s ease infinite;
+    min-height: 100vh;
+}
+
+/* 4. Page Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+main.container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* 5. Headings Font */
+h1, h2, h3, h4, h5, h6, strong {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+/* 6. The "Glassmorphism" Card */
+article, nav {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 7. Card Hover Animation */
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* 8. Auth Form (Login/Register) Styling */
+.auth-card {
+    max-width: 450px;
+    margin: 4rem auto 0 auto;
+}
+.auth-card h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+.auth-card p {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* 9. Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+nav ul {
+    margin-bottom: 0;
+}
+nav li {
+    padding-left: 0;
+}
+nav [role="button"] {
+    margin-bottom: 0;
+    background-color: transparent;
+    border: 1px solid var(--color-text);
+    color: var(--color-text);
+    font-weight: 600;
+}
+nav [role="button"]:hover {
+    background-color: var(--color-text);
+    color: var(--color-text-dark);
+}
+
+
+/* 10. Form & Button Styling */
+label {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="search"] {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: #fff;
+    padding: 12px;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+button[type="submit"], [role="button"] {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--color-primary);
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+button[type="submit"]:hover, [role="button"]:hover {
+    background-color: var(--color-primary-hover);
+    transform: scale(1.03);
+}
+
+/* 11. Links */
+a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+a:hover {
+    color: #ddd;
+    text-decoration: underline;
+}
+
+/* 12. Job Card Specifics */
+.job-card header {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.job-card header a {
+    font-size: 1.25rem;
+    color: #fff;
+}
+.job-card footer {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* 13. Flashed Message Animations */
+@keyframes slideIn {
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+.flashed-message {
+    padding: 1.5rem;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    animation: slideIn 0.5s ease-out;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+.flashed-message.success {
+    background-color: rgba(40, 167, 69, 0.8); /* success */
+}
+.flashed-message.warning {
+     background-color: rgba(220, 53, 69, 0.8); /* danger/warning */
+}

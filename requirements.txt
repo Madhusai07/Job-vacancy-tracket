@@ -1,0 +1,7 @@
+Flask
+Flask-Login
+Flask-SQLAlchemy
+requests
+schedule
+werkzeug
+Flask-Mail

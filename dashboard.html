@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <nav>
+        <ul>
+            <li><strong>Welcome, {{ user.username }}</strong></li>
+        </ul>
+        <ul>
+            <li><a href="{{ url_for('auth.logout') }}" role="button">Logout</a></li>
+        </ul>
+    </nav>
+
+    <article class="search-form">
+        <form method="GET" action="/">
+            <div class="grid">
+                <input type="search" name="q" placeholder="Search title or company..." value="{{ q }}">
+                <input type="search" name="location" placeholder="Filter by location..." value="{{ loc }}">
+                <button type="submit">Search</button>
+            </div>
+        </form>
+    </article>
+
+
+    <h2 style="color: #fff; margin-top: 2.5rem;">Recent Jobs</h2>
+    
+    {% for job in jobs %}
+        <article class="job-card">
+            <header>
+                <a href="{{ job.url }}" target="_blank">{{ job.title }}</a>
+                <p style="margin: 0.25rem 0 0 0; font-size: 1.1rem; opacity: 0.9;">{{ job.company }}</p>
+            </header>
+            
+            <p><strong>Location:</strong> {{ job.location or 'Remote' }}</p>
+            
+            <footer>
+                <small>Source: {{ job.source }} | Posted: {{ job.date_posted.split('T')[0] }}</small>
+            </footer>
+        </article>
+    {% else %}
+        <article>
+            <p>No jobs found matching your search. The scraper runs every 30 minutes.</p>
+        </article>
+    {% endfor %}
+
+{% endblock %}
